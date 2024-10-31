@@ -1,0 +1,68 @@
+
+balance = 0.0
+transactions =[]
+		
+def check_balance():
+	print(f"user balance is: N" + str(balance))
+	return
+	
+def deposit():
+	global balance
+	amount_to_deposit = float(input("Amount to deposit: "))
+	balance = balance + amount_to_deposit
+	print("your new balance: " + str(balance))
+	transactions.append("new balance after deposit " + str(amount_to_deposit) + " is:" + str(balance))
+	return
+		
+def withdraw():
+	global balance
+	amount_to_withdraw = float(input("Amount to withdraw: "))
+	if amount_to_withdraw > balance:
+		print("insufficient fund")
+	else:
+		balance = balance - amount_to_withdraw
+		print("your new balance after withdrawing " + str(amount_to_withdraw) +" is: " +  str(balance))
+		transactions.append("new balance after withdrawal " + str(amount_to_withdraw) + " is:" + str(balance))
+	return
+	
+def transaction_history():
+	if transactions:
+		for i in transactions:
+			print(i)
+	else:
+				print("No transactions is made yet")
+				return
+		
+#main application
+def core_app():
+	def user_input():
+		print("WELLCOME TO GLM BANK".center(50))
+		print("1. check balance")
+		print("2. deposit money")
+		print("3. withdraw money")
+		print("4. transaction history")
+		print("5. exist application")
+	     
+	     #choose an option
+	while True:
+		user_input()
+		choose_an_option = int(input("what did you want to do: "))
+		#look through loop
+		if choose_an_option == 1:
+			check_balance()
+		elif choose_an_option == 2:
+			deposit()
+		elif choose_an_option == 3:
+			withdraw()
+		elif choose_an_option == 4:
+			transaction_history()
+		elif choose_an_option == 5:
+			print("Thank you for banking with us")
+			break
+		else:
+			print("invalid user input")
+			return
+			
+			
+core_app()
+		
